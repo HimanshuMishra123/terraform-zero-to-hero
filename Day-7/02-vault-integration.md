@@ -17,7 +17,7 @@ To create an AWS EC2 instance with Ubuntu, you can use the AWS Management Consol
 
 To install Vault on the EC2 instance, you can use the following steps:
 
-**Install gpg**
+**Install gpg(hashicorp package manager)**
 
 ```
 sudo apt update && sudo apt install gpg
@@ -51,13 +51,28 @@ sudo apt update
 sudo apt install vault
 ```
 
-## Start Vault.
+**To check if vault is installed**
+``
+vault
+``
 
-To start Vault, you can use the following command:
+## To Start Vault server.
+
+To start Vault server, Vault comes in two different variations one is you can start the production server or you can start the development server for proof of Concepts and demonstrations. You can use the development server(just like minikube for k8s) it has the features that are required and there is no problem in using it but when you're using in your organization you need to use the production instance you need to attach TLS and certificates and you need to create the production grade instance(EC2). <br/>
+
+To start devlopment Vault server, you can use the following command:
 
 ```
 vault server -dev -dev-listen-address="0.0.0.0:8200"
+
 ```
+Take a different tab and ssh to ec2 and give command... 
+```sh 
+export VAULT_ADDR='http://0.0.0.0:8200'
+```
+Now enable port 8200 in EC2 instance security group inbound traffic.<br/>
+Go to browser and search .... Public_ip:8200 <br/>
+vault UI will appear.. There Multiple methods/way for organization to authenticate and integrate with your Vault with existing userbase but for demo purpose we will use root token generated while running Vault development server. Using which we will get root access to Hashicorp vault UI.
 
 ## Configure Terraform to read the secret from Vault.
 
