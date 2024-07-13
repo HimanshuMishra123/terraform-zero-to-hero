@@ -9,8 +9,8 @@ condition ? true_val : false_val
 ```
 
 - `condition` is an expression that evaluates to either `true` or `false`.
-- `true_val` is the value that is returned if the condition is `true`.
-- `false_val` is the value that is returned if the condition is `false`.
+- `true_val` is the value that is returned if the condition is `true` means condition fulfilled.
+- `false_val` is the value that is returned if the condition is `false` means conditioned not matched.
 
 Here are some common use cases and examples of how to use conditional expressions in Terraform:
 
