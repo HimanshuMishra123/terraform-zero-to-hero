@@ -1,3 +1,5 @@
+# Managing different workspaces(dev, stage, prod) using lookup(map,key) but which method is best for you depends upon variousthings..Read > tfvars vs lookup for workspace application.md
+
 provider "aws" {
   region = "us-east-1"
 }
