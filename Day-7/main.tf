@@ -2,7 +2,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-#Vault Provider,in path authenticate using approle for login
+#Vault Provider,path value means here...authenticate using approle for login
 provider "vault" {
   address = "<>:8200"
   skip_child_token = true
