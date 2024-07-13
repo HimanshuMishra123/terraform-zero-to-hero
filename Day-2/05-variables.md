@@ -41,7 +41,7 @@ Output variables allow you to expose values from your module or configuration, m
 ```hcl
 output "example_output" {
   description = "An example output variable"
-  value       = resource.example_resource.example.id
+  value       = resource.example_resource.example.id          
 }
 ```
 
@@ -49,7 +49,7 @@ In this example:
 
 - `output` is used to declare an output variable named `example_output`.
 - `description` provides a description of the output variable.
-- `value` specifies the value that you want to expose as an output variable. This value can be a resource attribute, a computed value, or any other expression. Example- resource.aws_instance.id
+- `value` specifies the value that you want to expose as an output variable. This value can be a resource attribute, a computed value, or any other expression. Example- aws_instance.example.public_ip this will return public ip of example resource
 
 You can reference output variables in the root module or in other modules by using the syntax `module.module_name.output_name`, where `module_name` is the name of the module containing the output variable.
 
