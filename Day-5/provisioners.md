@@ -73,9 +73,9 @@ Certainly, let's delve deeper into the `file`, `remote-exec`, and `local-exec` p
    }
    ```
 
-   In this example, a `null_resource` is used with a `local-exec` provisioner to run a simple local command that echoes a message to the console whenever Terraform is applied or refreshed. The `timestamp()` function ensures it runs each time.
+   In this example, a `null_resource` is used with a `local-exec` provisioner to run a simple local command that echoes a message to the console whenever Terraform is applied or refreshed. The `timestamp()` function ensures it runs each time.<br/>
 
-   you can use local-exec provisioner for invoking ansible playbook on resource created by terraform.
+you can use local-exec provisioner for invoking ansible playbook on resource created by terraform.
 
 ```hcl
 provider "aws" {
@@ -96,3 +96,6 @@ resource "aws_instance" "example" {
   }
 }
 ```
+you can do extreme automation, where you install terraform and ansible on Jenkins worker nodes and in your pipeline script you can invoke the terraform(to build Infra) and ansible(to configure/install dependency software) to do everything automatically.
+https://cscontents.com/end-to-end-automation-using-terraform-ansible-jenkins-pipeline/
+
