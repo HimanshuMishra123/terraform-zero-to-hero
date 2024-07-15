@@ -74,3 +74,25 @@ Certainly, let's delve deeper into the `file`, `remote-exec`, and `local-exec` p
    ```
 
    In this example, a `null_resource` is used with a `local-exec` provisioner to run a simple local command that echoes a message to the console whenever Terraform is applied or refreshed. The `timestamp()` function ensures it runs each time.
+
+   you can use local-exec provisioner for invoking ansible playbook on resource created by terraform.
+
+```hcl
+provider "aws" {
+  region = "us-west-2"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+  key_name      = "your-key-pair"
+
+  provisioner "local-exec" {
+    command = "ansible-playbook -i ${self.public_ip}, your-playbook.yml"
+  }
+
+  tags = {
+    Name = "ExampleInstance"
+  }
+}
+```
