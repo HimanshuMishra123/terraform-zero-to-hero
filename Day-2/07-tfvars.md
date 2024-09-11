@@ -14,8 +14,18 @@ Here's the purpose of `.tfvars` files:
 
 4. **Collaboration**: When working in a team, each team member can have their own `.tfvars` file to set values specific to their environment or workflow. This avoids conflicts in the codebase when multiple people are working on the same Terraform project.
 
-## Summary
 
+### Directory Structure
+
+```
+terraform/
+├── main.tf
+├── variables.tf
+├── outputs.tf
+├── dev.tfvars
+├── staging.tfvars
+└── prod.tfvars
+```
 Here's how you typically use `.tfvars` files
 
 1. Define your input variables in your Terraform code (e.g., in a `variables.tf` file).
@@ -28,4 +38,94 @@ Here's how you typically use `.tfvars` files
 terraform apply -var-file=dev.tfvars
 ```
 
-By using `.tfvars` files, you can keep your Terraform code more generic and flexible while tailoring configurations to different scenarios and environments.
+### Example of different files of directory structure
+
+#### `variables.tf`
+
+This file defines the input variables for your Terraform configuration.
+
+```hcl
+# variables.tf
+
+variable "region" {
+  description = "The AWS region to deploy resources into."
+  type        = string
+}
+
+variable "instance_type" {
+  description = "The type of instance to use."
+  type        = string
+}
+
+variable "environment" {
+  description = "The environment for which to deploy resources."
+  type        = string
+}
+
+variable "tags" {
+  description = "Tags to apply to the resources."
+  type        = map(string)
+  default     = {}
+}
+```
+
+#### `dev.tfvars`
+
+This file contains values specific to the `dev` environment.
+
+```hcl
+# dev.tfvars
+
+region         = "us-west-1"
+instance_type  = "t2.micro"
+environment    = "dev"
+tags = {
+  Name        = "dev-instance"
+  Environment = "development"
+}
+```
+
+#### `staging.tfvars`
+
+This file contains values specific to the `staging` environment.
+
+```hcl
+# staging.tfvars
+
+region         = "us-west-2"
+instance_type  = "t2.medium"
+environment    = "staging"
+tags = {
+  Name        = "staging-instance"
+  Environment = "staging"
+}
+```
+
+#### `prod.tfvars`
+
+This file contains values specific to the `prod` environment.
+
+```hcl
+# prod.tfvars
+
+region         = "us-east-1"
+instance_type  = "t2.large"
+environment    = "prod"
+tags = {
+  Name        = "prod-instance"
+  Environment = "production"
+}
+```
+
+### Usage
+
+When applying or planning your Terraform configuration, you can specify the environment-specific `.tfvars` file like this:
+
+```sh
+terraform plan -var-file="dev.tfvars"
+terraform apply -var-file="prod.tfvars"
+```
+## Summary
+This setup allows you to maintain environment-specific configurations easily and keep your main Terraform configuration clean and reusable. Adjust the variable names and values according to your specific needs and infrastructure requirements.
+
+
