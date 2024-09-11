@@ -95,9 +95,9 @@ resource "aws_security_group" "example" {
 }
 ```
 
-### Explanation and Improvements
+### Explanation
 
-1. **Added `vpc_id`**:
+1. **`vpc_id`**:
    - Ensure you specify the VPC ID where the security group should be created. This is necessary if you're not using the default VPC or if you want to explicitly define the VPC.
 
 2. **Egress Rules**:
