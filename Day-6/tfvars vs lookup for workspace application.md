@@ -55,6 +55,7 @@ terraform apply -var-file="production.tfvars"
 2. **Potential for Errors**: Misconfigurations in the map can affect all environments, so careful management is needed.
 
 #### Example:
+**Note:** In Terraform, maps are a type of data structure used to associate keys with values. When using maps in Terraform, you can perform lookups to retrieve values based on a specific key(like environment). This is particularly useful for dynamic configuration where the values you need might vary depending on different inputs or conditions. A map in Terraform is defined using curly braces {}.
 
 - **variables.tf**:
   ```hcl
