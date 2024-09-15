@@ -75,7 +75,7 @@ Go to browser and search .... Public_ip:8200 <br/>
 vault UI will appear.. There Multiple methods/way for organization to authenticate and integrate with your Vault with existing userbase but for demo purpose we will use root token generated while running Vault development server. Using which we will get root access to Hashicorp vault UI.<br/>
 
 Secrets Engine : Jis bhi chij ke secrets bnane hai example : K8s, Clouds, databses, KV(key value)<br/>
-Enable new engine>>select secret engine>>add any name to "path"(this will crete a mount/folder)>>crete secret>> Path for this secret(any name), secret data (key value pair)>>save <br/>
+Enable new engine>>select secret engine>>add any name to "path"(this will create a mount/folder)>>create secret>> Path for this secret(any name), secret data (key value pair)>>save <br/>
 
 Access : In access you define how you will authenticate, most widely used method is Approle(similiar to Iam Role).you are telling hashicorp that I want to use app roll based authentication so I will authenticate terraform or anible or anything using this app roll mechanism. for this you can use the Vault CLI or the Vault HTTP API (UI). from UI below are the steps- <br/> 
 Enable new method>> AppRole>>next>>enable method<br/>
