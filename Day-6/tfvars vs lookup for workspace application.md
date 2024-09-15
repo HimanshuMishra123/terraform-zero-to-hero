@@ -96,6 +96,18 @@ terraform apply -var-file="production.tfvars"
   }
   ```
 
+- **or same main.tf with default values in lookup** - default values prevent errors if the key is not present in configuration map for particular workspace. The default values will only be used if the corresponding key is not found in the environment configuration.
+```hcl
+provider "aws" {
+  region = var.region
+}
+
+resource "aws_instance" "example" {
+  ami           = lookup(var.environment_config[terraform.workspace], "ami", "default-ami-id")
+  instance_type = lookup(var.environment_config[terraform.workspace], "instance_type", "t2.micro")
+}
+```
+
 **Apply Configuration**:
 ```bash
 terraform workspace select dev
